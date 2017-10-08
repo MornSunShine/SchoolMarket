@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:background="#323943"
+    android:layout_width="285dp">
+
+    <com.main.maomorn.tools.CircleImageView
+        android:id="@+id/head_portrait"
+        android:layout_width="@dimen/head_portrait_height"
+        android:layout_height="@dimen/head_portrait_height"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/background"
+        app:in_border_color="@android:color/transparent"
+        app:in_border_width="@dimen/head_portrait_in_border_width"
+        app:mid_border_color="@color/title_bg"
+        app:mid_border_width="@dimen/head_portrait_out_border_width" />
+
+    <TextView
+        android:id="@+id/nick_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/head_portrait"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/nick_name_margin"
+        android:layout_marginTop="@dimen/nick_name_margin"
+        android:maxLines="1"
+        android:text="趙靈儿"
+        android:textSize="@dimen/nick_name_text_size"
+        android:textStyle="bold" />
+
+    <com.main.maomorn.tools.numberprogressbar.NumberProgressBar
+        android:id="@+id/process_line"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nick_name"
+        android:layout_centerHorizontal="true"
+        app:progress_current="75"
+        app:progress_max="100"
+        app:progress_reached_bar_height="3dp"
+        app:progress_reached_color="@color/title_bg"
+        app:progress_text_visibility="invisible"
+        app:progress_unreached_bar_height="5dp"
+        app:progress_unreached_color="@color/grey_6" />
+
+    <TextView
+        android:id="@+id/information_completion_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/process_line"
+        android:layout_centerHorizontal="true"
+        android:text="信息完整度     75%" />
+
+    <TextView
+        android:id="@+id/info1_content"
+        android:layout_width="@dimen/info_width"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/information_completion_state"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/info_content_vertical_margin"
+        android:layout_marginEnd="@dimen/info_content_horizontal_margin"
+        android:layout_marginTop="@dimen/info_content_vertical_margin"
+        android:layout_toStartOf="@+id/info2_content"
+        android:gravity="center"
+        android:text="175"
+        android:textColor="@color/info_content_color"
+        android:textSize="@dimen/info_content_size" />
+
+    <TextView
+        android:id="@+id/info2_content"
+        android:layout_width="@dimen/info_width"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/information_completion_state"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/info_content_vertical_margin"
+        android:layout_marginEnd="@dimen/info_content_horizontal_margin"
+        android:layout_marginStart="@dimen/info_content_horizontal_margin"
+        android:layout_marginTop="@dimen/info_content_vertical_margin"
+        android:gravity="center"
+        android:text="126"
+        android:textColor="@color/info_content_color"
+        android:textSize="@dimen/info_content_size" />
+
+    <TextView
+        android:id="@+id/info3_content"
+        android:layout_width="@dimen/info_width"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/information_completion_state"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/info_content_vertical_margin"
+        android:layout_marginStart="@dimen/info_content_horizontal_margin"
+        android:layout_marginTop="@dimen/info_content_vertical_margin"
+        android:layout_toEndOf="@+id/info2_content"
+        android:gravity="center"
+        android:text="201"
+        android:textColor="@color/info_content_color"
+        android:textSize="@dimen/info_content_size" />
+
+    <TextView
+        android:id="@+id/info1_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/info1_content"
+        android:layout_alignStart="@+id/info1_content"
+        android:layout_below="@+id/info2_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="信息"
+        android:textColor="@color/info_title_color"
+        android:textSize="@dimen/info_title_size" />
+
+    <TextView
+        android:id="@+id/info2_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/info2_content"
+        android:layout_alignStart="@+id/info2_content"
+        android:layout_below="@+id/info2_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="关注我的"
+        android:textColor="@color/info_title_color"
+        android:textSize="@dimen/info_title_size" />
+
+    <TextView
+        android:id="@+id/info3_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/info3_content"
+        android:layout_alignStart="@+id/info3_content"
+        android:layout_below="@+id/info2_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="我关注的"
+        android:textColor="@color/info_title_color"
+        android:textSize="@dimen/info_title_size" />
+
+    <ScrollView
+        android:id="@+id/sv_left_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/info2_title"
+        android:layout_marginTop="15dp"
+        android:scrollbars="none"
+        android:background="#434858">
+
+        <LinearLayout
+            android:id="@+id/layout_left_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"></LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

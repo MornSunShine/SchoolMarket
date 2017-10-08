@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="150dp">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_img"
+        android:src="@drawable/background"
+        android:adjustViewBounds="true" />
+
+    <TextView
+        android:text="春季特推"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_title"
+        android:layout_below="@+id/item_img"
+        android:layout_alignStart="@+id/item_img"
+        android:layout_alignEnd="@+id/item_img"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textSize="16sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:text="亟待出售，这好似一个神奇的售卖品"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:maxLines="1"
+        android:layout_below="@+id/item_title"
+        android:id="@+id/item_introduction"
+        android:visibility="gone"
+        android:gravity="center" />
+
+    <TextView
+        android:text="￥:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/price_title"
+        android:layout_below="@+id/item_introduction"
+        android:layout_toStartOf="@+id/price"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_introduction"
+        android:visibility="gone"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/price" />
+
+</RelativeLayout>

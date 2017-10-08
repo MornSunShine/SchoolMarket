@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lL_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imagetextview_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:srcCompat="@drawable/fun_location"
+        android:adjustViewBounds="true" />
+
+    <TextView
+        android:id="@+id/imagetextview_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="456546"
+        android:textColor="@android:color/black"
+        android:textSize="18.0dip"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/func_text_margin" />
+
+</LinearLayout>

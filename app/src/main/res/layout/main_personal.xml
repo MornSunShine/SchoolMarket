@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <com.main.maomorn.tools.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        app:left_img="@drawable/icon_location"
+        app:right_img="@drawable/icon_location"
+        app:title="个人中心"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/page_bottom_padding">
+
+            <com.main.maomorn.tools.roundedimageview.RoundedImageView
+                android:id="@+id/profile_bg"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/profile_bg_height"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/banner2"
+                app:riv_corner_radius_bottom_left="@dimen/profile_bg_radius"
+                app:riv_corner_radius_bottom_right="@dimen/profile_bg_radius" />
+
+            <com.main.maomorn.tools.CircleImageView
+                android:id="@+id/head_portrait"
+                android:layout_width="@dimen/head_portrait_height"
+                android:layout_height="@dimen/head_portrait_height"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/head_portrait_top_margin"
+                android:src="@drawable/background"
+                app:in_border_color="@android:color/transparent"
+                app:in_border_width="@dimen/head_portrait_in_border_width"
+                app:mid_border_color="@color/title_bg"
+                app:mid_border_width="@dimen/head_portrait_out_border_width" />
+
+            <ImageView
+                android:layout_width="@dimen/personal_func_width"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fun_location"
+                android:id="@+id/personal_func1"
+                android:adjustViewBounds="true"
+                android:layout_toStartOf="@+id/head_portrait"
+                android:layout_marginTop="@dimen/personal_func_top_margin"
+                android:layout_marginEnd="@dimen/personal_func_margin" />
+
+            <ImageView
+                android:layout_width="@dimen/personal_func_width"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fun_location"
+                android:id="@+id/personal_func2"
+                android:adjustViewBounds="true"
+                android:layout_toEndOf="@+id/head_portrait"
+                android:layout_marginTop="@dimen/personal_func_top_margin"
+                android:layout_marginStart="@dimen/personal_func_margin" />
+
+            <TextView
+                android:id="@+id/nick_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/head_portrait"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/nick_name_margin"
+                android:layout_marginTop="@dimen/nick_name_margin"
+                android:maxLines="1"
+                android:text="趙靈儿"
+                android:textSize="@dimen/nick_name_text_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/brief_introduction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nick_name"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/personal_brief_margin"
+                android:layout_marginTop="@dimen/personal_brief_margin"
+                android:maxLines="1"
+                android:text="大量优质学姐，亟待出售"
+                android:textSize="@dimen/personal_brief_text_size" />
+
+            <View
+                android:id="@+id/dotted_line"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_below="@id/brief_introduction"
+                android:layout_marginBottom="@dimen/dotted_line_vertical_margin"
+                android:layout_marginEnd="@dimen/dotted_line_horizontal_margin"
+                android:layout_marginStart="@dimen/dotted_line_horizontal_margin"
+                android:layout_marginTop="@dimen/dotted_line_vertical_margin"
+                android:background="@drawable/dotted_line"
+                android:layerType="software"
+                android:visibility="visible" />
+
+            <com.main.maomorn.tools.ImageTextView
+                android:id="@+id/func1"
+                android:layout_width="@dimen/func_width"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dotted_line"
+                android:layout_centerHorizontal="true"
+                android:layout_marginEnd="@dimen/func_horizontal_margin"
+                android:layout_marginStart="0dp"
+                android:layout_toStartOf="@+id/func2"
+                android:src="@drawable/fun_location"
+                android:text="我收藏的"
+                android:layout_marginBottom="@dimen/func_vertical_margin"
+                android:layout_marginTop="@dimen/func_vertical_margin"
+                app:text_margin_bottom="@dimen/func_text_margin"
+                app:text_margin_top="@dimen/func_text_margin" />
+
+            <com.main.maomorn.tools.ImageTextView
+                android:id="@+id/func2"
+                android:layout_width="@dimen/func_width"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dotted_line"
+                android:layout_centerHorizontal="true"
+                android:layout_marginEnd="@dimen/func_horizontal_margin"
+                android:layout_marginStart="@dimen/func_horizontal_margin"
+                android:src="@drawable/fun_location"
+                android:text="我收藏的"
+                android:layout_marginBottom="@dimen/func_vertical_margin"
+                android:layout_marginTop="@dimen/func_vertical_margin"
+                app:text_margin_bottom="@dimen/func_text_margin"
+                app:text_margin_top="@dimen/func_text_margin" />
+
+            <com.main.maomorn.tools.ImageTextView
+                android:id="@+id/func3"
+                android:layout_width="@dimen/func_width"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dotted_line"
+                android:layout_centerHorizontal="true"
+                android:layout_marginEnd="0dp"
+                android:layout_marginStart="@dimen/func_horizontal_margin"
+                android:layout_toEndOf="@+id/func2"
+                android:src="@drawable/fun_location"
+                android:text="我收藏的"
+                android:layout_marginBottom="@dimen/func_vertical_margin"
+                android:layout_marginTop="@dimen/func_vertical_margin" />
+
+            <com.main.maomorn.tools.ImageTextView
+                android:id="@+id/func4"
+                android:layout_width="@dimen/func_width"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/func2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginEnd="@dimen/func_horizontal_margin"
+                android:layout_marginStart="0dp"
+                android:layout_toStartOf="@+id/func5"
+                android:src="@drawable/fun_location"
+                android:text="我收藏的"
+                android:layout_marginBottom="@dimen/func_vertical_margin"
+                android:layout_marginTop="@dimen/func_vertical_margin" />
+
+            <com.main.maomorn.tools.ImageTextView
+                android:id="@+id/func5"
+                android:layout_width="@dimen/func_width"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/func2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginEnd="@dimen/func_horizontal_margin"
+                android:layout_marginStart="@dimen/func_horizontal_margin"
+                android:src="@drawable/fun_location"
+                android:text="我收藏的"
+                android:layout_marginBottom="@dimen/func_vertical_margin"
+                android:layout_marginTop="@dimen/func_vertical_margin" />
+
+            <com.main.maomorn.tools.ImageTextView
+                android:id="@+id/func6"
+                android:layout_width="@dimen/func_width"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/func2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginEnd="0dp"
+                android:layout_marginStart="@dimen/func_horizontal_margin"
+                android:layout_toEndOf="@+id/func5"
+                android:src="@drawable/fun_location"
+                android:text="我收藏的"
+                android:layout_marginBottom="@dimen/func_vertical_margin"
+                android:layout_marginTop="@dimen/func_vertical_margin" />
+
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

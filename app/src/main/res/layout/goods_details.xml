@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/goods_details"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
+
+    <com.main.maomorn.tools.SearchBar
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:st_left_img="@drawable/icon_info"
+        app:st_right_img="@drawable/icon_info"
+        android:layout_gravity="top" />
+
+    <com.main.maomorn.tools.DIYScrollView
+        android:id="@+id/scrollView"
+        android:layout_below="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/shopping_tools">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical">
+
+            <com.main.maomorn.tools.BannerLayout
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_alignParentTop="true"
+                app:autoPlayDuration="4000"
+                app:indicatorMargin="10dp"
+                app:indicatorPosition="rightBottom"
+                app:indicatorShape="rect"
+                app:indicatorSpace="3dp"
+                app:isAutoPlay="true"
+                app:scrollDuration="600"
+                app:selectedIndicatorColor="?attr/colorPrimary"
+                app:selectedIndicatorHeight="6dp"
+                app:selectedIndicatorWidth="6dp"
+                app:unSelectedIndicatorColor="#99ffffff"
+                app:unSelectedIndicatorHeight="6dp"
+                app:unSelectedIndicatorWidth="6dp" />
+
+            <com.main.maomorn.tools.ColorArcProgressBar
+                android:id="@+id/browse_number"
+                android:layout_width="@dimen/browse_num_height"
+                android:layout_height="@dimen/browse_num_height"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/banner"
+                android:layout_margin="@dimen/goods_details_margin"
+                app:back_color="@color/grey_6"
+                app:back_width="5dp"
+                app:content_offset="-0.2"
+                app:content_size="28sp"
+                app:current_value="20"
+                app:is_need_content="true"
+                app:is_need_dial="false"
+                app:is_need_unit="true"
+                app:max_value="100"
+                app:progress_color1="@color/red"
+                app:progress_width="3dp"
+                app:string_unit="浏览"
+                app:unit_offset="-0.6"
+                app:unit_size="9sp" />
+
+            <com.main.maomorn.tools.materialratingbar.MaterialRatingBar
+                android:id="@+id/ratingbar"
+                style="@style/Widget.MaterialRatingBar.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/browse_number"
+                android:layout_alignStart="@+id/goods_name"
+                android:layout_marginStart="7dp"
+                android:isIndicator="true"
+                android:rating="2.5"
+                app:mrb_progressTint="@color/title_bg" />
+
+            <ImageView
+                android:id="@+id/love_img"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/browse_number"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@+id/goods_name"
+                android:adjustViewBounds="true"
+                android:paddingEnd="@dimen/goods_details_margin"
+                android:paddingStart="5dp"
+                android:src="@drawable/icon_love_empty" />
+
+            <TextView
+                android:id="@+id/love_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/browse_number"
+                android:layout_alignTop="@+id/browse_number"
+                android:layout_below="@+id/goods_name"
+                android:layout_toStartOf="@+id/love_img"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="200"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/goods_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/ratingbar"
+                android:layout_alignTop="@+id/browse_number"
+                android:layout_toEndOf="@+id/browse_number"
+                android:layout_toStartOf="@+id/love_num"
+                android:gravity="center_vertical"
+                android:text="专业公路滑板 长板 七成新"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/goods_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="￥:1314"
+                android:layout_below="@+id/browse_number"
+                android:layout_marginStart="@dimen/goods_details_margin"
+                android:layout_marginEnd="@dimen/goods_details_margin"
+                android:textSize="24sp"/>
+            <View
+                android:id="@+id/dotted_line1"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_below="@+id/goods_price"
+                android:layout_marginEnd="@dimen/goods_details_margin"
+                android:layout_marginStart="@dimen/goods_details_margin"
+                android:background="@drawable/dotted_line"
+                android:layerType="software"
+                android:visibility="visible" />
+
+            <com.main.maomorn.tools.ExpandableTextView
+                android:id="@+id/goods_introduction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dotted_line1"
+                android:layout_alignStart="@+id/dotted_line1"
+                android:layout_alignEnd="@+id/dotted_line1"
+                app:animAlphaStart="1"
+                app:maxCollapsedLines="2"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@id/expandable_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#666666"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@id/expand_collapse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|bottom"
+                    android:paddingTop="2dp"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/holo_blue_dark" />
+            </com.main.maomorn.tools.ExpandableTextView>
+
+            <View
+                android:id="@+id/dotted_line2"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_below="@+id/goods_introduction"
+                android:layout_alignStart="@+id/dotted_line1"
+                android:layout_alignEnd="@+id/dotted_line1"
+                android:background="@drawable/dotted_line"
+                android:layerType="software"
+                android:visibility="visible" />
+
+            <com.main.maomorn.tools.tagcloudlayout.TagCloudLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/container"
+                android:layout_alignStart="@id/dotted_line1"
+                android:layout_alignEnd="@+id/dotted_line1"
+                app:tagSpacing="8dp"
+                app:lineSpacing="5dp"
+                android:layout_below="@+id/dotted_line2"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp" />
+
+            <View
+                android:id="@+id/dotted_line3"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_below="@+id/container"
+                android:layout_alignStart="@+id/dotted_line1"
+                android:layout_alignEnd="@+id/dotted_line1"
+                android:background="@drawable/dotted_line"
+                android:layerType="software"
+                android:visibility="visible" />
+
+            <TextView
+                android:text="猜你喜欢"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/guess_love"
+                android:layout_below="@+id/dotted_line3"
+                android:layout_alignStart="@+id/dotted_line1"
+                android:textSize="14sp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp" />
+
+            <com.main.maomorn.tools.CompleteGridView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/guess_love_container"
+                android:numColumns="3"
+                android:layout_below="@+id/guess_love"
+                android:layout_alignStart="@+id/dotted_line1"
+                android:layout_alignEnd="@+id/dotted_line1"
+                android:horizontalSpacing="10dp"
+                android:scrollbars="none"
+                android:verticalSpacing="15dp"
+                android:layout_marginBottom="10dp" />
+
+        </RelativeLayout>
+    </com.main.maomorn.tools.DIYScrollView>
+
+    <RelativeLayout
+        android:id="@+id/shopping_tools"
+        android:layout_width="match_parent"
+        android:background="@color/tools_bar"
+        android:scrollbars="none"
+        android:layout_alignParentBottom="true"
+        android:paddingStart="7dp"
+        android:paddingEnd="7dp"
+        android:layout_height="50dp">
+
+        <com.main.maomorn.tools.ImageTextView
+            android:id="@+id/nav_shopping_cart"
+            android:layout_height="wrap_content"
+            android:text="分享"
+            app:text_margin_top="3dp"
+            android:textColor="@color/white"
+            android:layout_marginEnd="7dp"
+            android:layout_centerVertical="true"
+            android:layout_width="@dimen/nav_width" />
+
+        <com.main.maomorn.tools.ImageTextView
+            android:id="@+id/nav_share"
+            android:layout_height="wrap_content"
+            android:text="分享"
+            app:text_margin_top="3dp"
+            android:textColor="@color/white"
+            android:layout_toEndOf="@+id/nav_shopping_cart"
+            android:layout_marginStart="7dp"
+            android:layout_marginEnd="7dp"
+            android:layout_centerVertical="true"
+            android:layout_width="@dimen/nav_width" />
+
+        <com.main.maomorn.tools.ImageTextView
+            android:id="@+id/nav_boss"
+            android:layout_height="wrap_content"
+            android:text="分享"
+            app:text_margin_top="3dp"
+            android:textColor="@color/white"
+            android:layout_toEndOf="@+id/nav_share"
+            android:layout_marginStart="7dp"
+            android:layout_centerVertical="true"
+            android:layout_width="@dimen/nav_width" />
+
+        <Button
+            android:text="立即购买"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/button"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:background="@color/title_bg" />
+    </RelativeLayout>
+
+</RelativeLayout>
