@@ -45,6 +45,7 @@ public class PersonalFrag extends Fragment {
     private ResideMenuItem itemHome;
     // 头像目录
     private final String PATH = Environment.getExternalStorageDirectory() + "/SchoolMarket/HeadPortrait/";
+    private final String HeadPortrait = "head.jpg";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,18 +58,17 @@ public class PersonalFrag extends Fragment {
         View view = inflater.inflate(R.layout.main_personal, container, false);
         titleBar = (TitleBar) view.findViewById(R.id.titlebar);
         profileBg = (RoundedImageView) view.findViewById(R.id.profile_bg);
+        //头像设置
         headPortrait = (CircleImageView) view.findViewById(R.id.head_portrait);
-        Bitmap bt = BitmapFactory.decodeFile(PATH);// 从SD卡中找头像，转换成Bitmap
-        if (bt != null) {
-            Drawable drawable = new BitmapDrawable(null, bt);// 转换成drawable
-            headPortrait.setImageDrawable(drawable);
-        } else {
-/**
- * 如果SD里面没有则需要从服务器取头像，取回来的头像再保存在SD中
- *
- */
+        File file = new File(PATH + HeadPortrait);
+        if (!file.exists()) {
+            file.mkdir();
+            /**
+             * 如果SD里面没有则需要从服务器取头像，取回来的头像再保存在SD中
+             */
         }
-
+        Drawable drawable = new BitmapDrawable(null,PATH + HeadPortrait);
+        headPortrait.setImageDrawable(drawable);
         setUpMenu();
         initListener();
 
@@ -144,27 +144,30 @@ public class PersonalFrag extends Fragment {
         super.onStart();
     }
 
+    /**
+     * 以对话框的形式进行头像设置类型选择，拍摄或本地
+     */
     private void showTypeDialog() {
         final AlertDialog dialog = new AlertDialog.Builder(getContext()).create();
         View view = View.inflate(getContext(), R.layout.dialog_select_photo, null);
-        TextView tv_select_gallery = (TextView) view.findViewById(R.id.tv_select_gallery);
-        TextView tv_select_camera = (TextView) view.findViewById(R.id.tv_select_camera);
-        tv_select_gallery.setOnClickListener(new View.OnClickListener() {
+        TextView gallery = (TextView) view.findViewById(R.id.tv_select_gallery);
+        TextView camera = (TextView) view.findViewById(R.id.tv_select_camera);
+        gallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(Intent.ACTION_PICK, null);
-                intent1.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
-                startActivityForResult(intent1, 1);
+                Intent intent = new Intent(Intent.ACTION_PICK, null);
+                intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+                startActivityForResult(intent, 1);
                 dialog.dismiss();
             }
         });
-        tv_select_camera.setOnClickListener(new View.OnClickListener() {// 调用照相机
+        camera.setOnClickListener(new View.OnClickListener() {// 调用照相机
             @Override
             public void onClick(View v) {
-                Intent intent2 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                intent2.putExtra(MediaStore.EXTRA_OUTPUT,
-                        Uri.fromFile(new File(PATH+"head.jpg")));
-                startActivityForResult(intent2, 2);// 采用ForResult打开
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT,
+                        Uri.fromFile(new File(PATH + "head.jpg")));
+                startActivityForResult(intent, 2);// 采用ForResult打开
                 dialog.dismiss();
             }
         });
@@ -174,9 +177,10 @@ public class PersonalFrag extends Fragment {
 
     /**
      * 要求设置头像图片
+     *
      * @param requestCode 请求码
-     * @param resultCode 结果返回码
-     * @param data 管道传递的数据
+     * @param resultCode  结果返回码
+     * @param data        管道传递的数据
      */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -212,7 +216,8 @@ public class PersonalFrag extends Fragment {
     }
 
     /**
-     * 调用系统的裁剪功能
+     * 调用系统的裁剪功能,裁剪后的图片进行上传至服务器及保存操作
+     *
      * @param uri 待裁剪图片的路径
      */
     public void cropPhoto(Uri uri) {
@@ -229,6 +234,10 @@ public class PersonalFrag extends Fragment {
         startActivityForResult(intent, 3);
     }
 
+    /**
+     * 将裁剪后的图片保存到本地
+     * @param mBitmap
+     */
     private void setPicToView(Bitmap mBitmap) {
         String sdStatus = Environment.getExternalStorageState();
         if (!sdStatus.equals(Environment.MEDIA_MOUNTED)) { // 检测sd是否可用
@@ -236,7 +245,9 @@ public class PersonalFrag extends Fragment {
         }
         FileOutputStream b = null;
         File file = new File(PATH);
-        file.mkdirs();// 创建文件夹
+        if(!file.exists()){
+            file.mkdirs();// 创建文件夹
+        }
         try {
             b = new FileOutputStream(PATH + "head.jpg");
             mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, b);// 把数据写入文件
@@ -244,7 +255,6 @@ public class PersonalFrag extends Fragment {
             e.printStackTrace();
         } finally {
             try {
-// 关闭流
                 b.flush();
                 b.close();
             } catch (IOException e) {
